@@ -33,7 +33,14 @@ public class GameWindow {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-        GameWindow gameWindow = new GameWindow(); 	
+		SwingUtilities.invokeLater(new Runnable(){
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				GameWindow gameWindow = new GameWindow();
+			}
+		});
 	}
 	
 	public JFrame createAndShowGUI(){
@@ -74,9 +81,9 @@ public class GameWindow {
 		int velocityIterations = 6;
 		int positionIterations = 2;
 		
-		for(@SuppressWarnings("unused")
-		int i = 0;true; i++){
+		for(int i = 0;true; i++){
 			world.step(timeStep, velocityIterations, positionIterations);
+			//System.out.print("\r Steps: " + i);
 		}
 	}
 	
@@ -103,6 +110,10 @@ public class GameWindow {
 
 class MyPanel extends JPanel{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Body> drawList = new ArrayList<Body>();
 	
 	public MyPanel(){
